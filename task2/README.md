@@ -1,4 +1,4 @@
 # Run script
 ```
-./awssh YOUR_EC2_NAME_TAG
+$ ./awssh YOUR_EC2_NAME_TAG
 ```
