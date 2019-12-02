@@ -16,14 +16,6 @@
 - User has enough permission to execute terraform script
 - User has installed terraform cli
 
-##### Provide Environment Variables in `kubernetes-manifests/url-shortener-deployment.yaml`
-| Name          | Required | Default Value           | Description                                                     |
-|---------------|----------|-------------------------|-----------------------------------------------------------------|
-| REDIS_ENDPOINT  | No       | localhost                    | The redis endpoint to connect AWS ElastiCache           |
-| REDIS_PASSWORD        | No       | none | The redis password to connect AWS ElastiCache by token                                               |
-| REDIS_PORT | No       | 6379                 | The redis port to connect |
-| DOMAIN | No       | localhost                  | The domain for returned shorten url eg. bitly.com |
-
 ## Deploy
 
 Before running `terraform plan` and `terraform apply` in `./deploy.sh`, set a few environment variables with your AWS account details, for more information on using Terraform with AWS please take a look at this post  [Terraform: Beyond the Basics with AWS | AWS Partner Network (APN) Blog](https://aws.amazon.com/blogs/apn/terraform-beyond-the-basics-with-aws/)
