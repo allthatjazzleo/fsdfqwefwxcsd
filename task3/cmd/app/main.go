@@ -22,6 +22,9 @@ type url struct {
 // Domain is shorturl domain eg. bitly.com
 var Domain = domain()
 
+// check return shorten url is https or http
+var HttpsEnable = httpsEnable()
+
 func main() {
 	r := mux.NewRouter()
 	// /submit url to be short by check body
@@ -54,7 +57,11 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
 			panic(err)
 		} else if set {
 			fmt.Println("generated", genKey, v.URL)
-			v.SHORTENURI = "https://" + Domain + "/" + genKey
+			if HttpsEnable {
+				v.SHORTENURI = "https://" + Domain + "/" + genKey
+			} else {
+				v.SHORTENURI = "http://" + Domain + "/" + genKey
+			}
 			js, err := json.Marshal(v)
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -99,4 +106,10 @@ func domain() (d string) {
 		return "localhost:3000"
 	}
 	return
+}
+func httpsEnable() (b bool) {
+	if a := os.Getenv("HTTPS_ENABLE"); a == "True" {
+		return true
+	}
+	return false
 }
