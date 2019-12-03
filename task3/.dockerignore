@@ -1,4 +1,4 @@
 kubernetes-manifests/
-terraform-elasticache-ecs/
+terraform-elasticache-ecs
 README.md
 deploy.sh

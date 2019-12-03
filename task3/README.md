@@ -37,10 +37,15 @@ Outputs:
 alb_endpoint_address = xxxxxxxxxxx.ap-southeast-1.elb.amazonaws.com
 configuration_endpoint_address = xxxxxxxx.judoe0.clustercfg.apse1.cache.amazonaws.com
 ```
+Use **alb_endpoint_address** to test api
 ## Caveat
 
 From my experience, after ecs faraget is deployed, it may take 10-15 minutes to fully work when accessing to AWS ElastiCache due to `awsvpc network mode` in VPC.
 When you encounter **502 bad gateway**, please be patient! 
+
+## Destroy
+
+
 ## Local Development and Testing
 
 >Start local redis server

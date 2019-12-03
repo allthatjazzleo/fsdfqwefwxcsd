@@ -1,4 +1,5 @@
 github.com/allthatjazzleo/fsdfqwefwxcsd v0.0.0-20191201112037-601e13c8a921 h1:gvZb9GJCBYGfzLogDMJ6jIFf+jEa6PR20qigcyctu48=
+github.com/allthatjazzleo/fsdfqwefwxcsd v0.0.0-20191202163149-43e971e8ebc8 h1:Kh1gKvMU5v6N1wrUXSLM7UyF5sbsvUwS1fILL6HtDo8=
 github.com/go-redis/redis v6.15.6+incompatible h1:H9evprGPLI8+ci7fxQx6WNZHJSb7be8FqJQRhdQZ5Sg=
 github.com/go-redis/redis v6.15.6+incompatible/go.mod h1:NAIEuMOZ/fxfXJIrKDQDz8wamY7mA7PouImQ2Jvg6kA=
 github.com/gorilla/mux v1.7.3 h1:gnP5JzjVOuiZD07fKKToCAOjS0yOpj/qPETTXCCS6hw=
