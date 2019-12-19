@@ -22,6 +22,15 @@ type url struct {
 // Domain is shorturl domain eg. bitly.com
 var Domain = domain()
 
+// request record
+type Record struct {
+	num       int
+	expiredAt time.Time
+}
+
+//ip list
+var IPMap = make(map[string]*Record)
+
 // check return shorten url is https or http
 var HttpsEnable = httpsEnable()
 
@@ -38,6 +47,28 @@ func main() {
 // return shorten url
 func submitHandler(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
+
+	// rate-limit implementation
+	now := time.Now()
+	if val, ok := IPMap[r.RemoteAddr]; ok {
+		if now.Before(val.expiredAt) {
+			if val.num > 5 {
+				http.Error(w, fmt.Sprintf("Exceed rate limit"), http.StatusTooManyRequests)
+				return
+			} else {
+				val.num++
+			}
+
+		} else {
+			val.expiredAt = now.Add(time.Minute * time.Duration(1))
+			val.num = 1
+		}
+	} else {
+		IPMap[r.RemoteAddr] = &Record{
+			num:       1,
+			expiredAt: now.Add(time.Minute * time.Duration(1)),
+		}
+	}
 
 	var v url
 	if err := json.NewDecoder(r.Body).Decode(&v); err != nil {
